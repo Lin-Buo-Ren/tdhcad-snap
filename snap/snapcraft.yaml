@@ -1,6 +1,6 @@
 %YAML 1.1
 ---
-# Snapcraft Recipe for [Project]
+# Snapcraft Recipe for TdhCad
 # ------------------------------
 # This file is in the YAML data serialization format:
 # http://yaml.org
@@ -14,23 +14,32 @@
 # For support refer to the snapcraft section in the Snapcraft Forum:
 # https://forum.snapcraft.io/c/snapcraft
 
-# All following comments, including this one, are designed to be stripped
-# before contributing the recipe to the upstream
-
-# my-awesome-app, my-app-name, my-app-command, my-app-launch, my-app-part
-# are placeholders text meant to be replaced by appropriate content
-
-name: my-awesome-app
-summary: Single-line elevator pitch for your amazing snap under 79 chars.
+name: tdhcad-brlin
+summary: Vector Graphics Simplified
 description: |
-  This is my-awesome-app's description. You have a paragraph or two to tell
-  the most important story about your snap. Keep it under 100 words though,
-  we live in tweetspace and your description wants to look good in the snap
-  store.
+  Feature Summary:
+
+  * Click and drag to
+      * create entities of many shapes
+      * Move, rotate and resize entities
+      * Move points to reshape entities
+  * Create groups containing entities and other groups
+  * Create paths containing lines and curves
+  * Copy and paste entire entities or points between entities
+  * Change properties including color, width and dashes
+  * Apply color gradients to entities and groups
+  * Add a note to any entity
+  * Use any number of layers
+  * Create XY charts anywhere, annotated with CAD entities
+  * Export drawings to SVG, PNG or PDF files
+  * Save drawings within project databases
+  * Use calibrated raster images as background for drawings
+  * Automatically create Grids, Legends and Charts
+  * More, including Snap, Virtual Points, Arrows and FlipY....
 
 # The path of icon to represent the snap, relative to the source tree directory
 # Only PNG or SVG image is supported, dimension must be greater than 256x256px
-icon: snap/gui/my-awesome-app.png
+icon: snap/gui/tdhcad.png
 
 # Version string just for humans, typically '1.2+git' or '1.3.2'
 # The wrapping single quotes are often required to avoid the version string
@@ -44,7 +53,7 @@ version: determined-by-version-script
 # still required).
 # NOTE: The resulting version string cannot be longer than 32 characters
 version-script: ./snap/local/build-utilities/set-snap-version.bash
-#version-script: git -C parts/my-app-part/src describe --always --dirty --tags
+#version-script: git -C parts/tdhcad/src describe --always --dirty --tags
 
 # Security confinement
 # Use `devmode` to getting started
@@ -73,8 +82,8 @@ plugs:
   wayland:
 
   # Storage access
-  #home:
-  #removable-media: # Non-A/C
+  home:
+  removable-media: # Non-A/C
 
   # Network access
   #network:
@@ -86,29 +95,24 @@ plugs:
 # with `_snap_name_` or `snap run _snap_name_` commands, otherwise it can only be run
 # via `_snap_name_._app_name_` or `snap run _snap_name_._app_name_`
 apps:
-  my-app-name:
+  tdhcad-brlin:
     # The command to run the application, the base command should be an *relative path* to an executable file rooted from the `prime` directory (for `classic` confinement compatiblity, where command search PATHs under $SNAP isn't set for library compatiblity reasons).  The arguments are usually other launchers' *absolute path* rooted from the $SNAP environment variable that are *stacked over* previous ones to consolidate their runtime environment modifications.
     # NOTE: The right angle bracket at the beginning of the value of the `command` keyword starts a YAML folded style block scalar, refer the following spec document for more info: http://yaml.org/spec/1.2/spec.html#id2796251
     command: >
       bin/desktop-launch
-      "${SNAP}"/bin/my-awesome-app-launch
+      "${SNAP}"/bin/tdhcad-launch
       "${SNAP}"/bin/zenity
         --info
         --ok-label='Got it'
         --title='My Awesome App'
         --text='This is a demonstrative application for Snapcrafters Template Plus.\nIt indicates that the snapped application has been launched properly.'
-        --window-icon="${SNAP}"/snap/gui/my-awesome-app.png
+        --window-icon="${SNAP}"/snap/gui/tdhcad.png
         --width=600
 
     # If the providing part of the app. has a desktop entry, specify its path relative to the `prime` directory.
     # If the packaging target doesn't provide a desktop entry, ignore the `desktop` key and implement a desktop entry in `/snap/gui`
-    #desktop: share/applications/my-app-name.desktop
+    #desktop: share/applications/tdhcad.desktop
 
-# Run `snapcraft help sources` for supported keywords on pulling a part's source ingredients
-# Run `snapcraft plugins` for supported build helper plugins
-# Run `snapcraft help plugins` for supported keywords on building a part
-# For `override-*` scriptlets used to modify behavior of certain part's lifecycle phase, check out:
-# https://docs.snapcraft.io/scriptlets/4892
 parts:
   # Utility programs to help with package building
   build-utilities:
@@ -129,26 +133,22 @@ parts:
     - -bin/README.*
 
   # Program patches to solve issues that can't be solved by tweaking in runtime
-  patches:
-    source: snap/local/patches
-    plugin: dump
-    organize:
-      '*': assets/patches/
-    prime:
-    - -*
+  #patches:
+    #source: snap/local/patches
+    #plugin: dump
+    #organize:
+      #'*': assets/patches/
+    #prime:
+    #- -*
 
   # Helper programs that can be called at snap runtime
-  helpers:
-    source: snap/local/helpers
-    plugin: dump
-    organize:
-      '*': bin/
-    stage:
-    - -bin/README.*
-
-  # Remote part for fixing the glibc locales(and gnu gettext I18N support)
-  # This part is only required for non GUI apps that don't uses the desktop-launch launchers
-  #locales-launch:
+  #helpers:
+    #source: snap/local/helpers
+    #plugin: dump
+    #organize:
+      #'*': bin/
+    #stage:
+    #- -bin/README.*
 
   # Remote part for recording the exact revision for each part during building
   parts-meta-info:
@@ -171,7 +171,7 @@ parts:
     organize:
       snap/$SNAPCRAFT_PROJECT_NAME/current: /
 
-  my-app-part:
+  tdhcad:
     after:
     - build-utilities # for patch-desktop-entries.*
 

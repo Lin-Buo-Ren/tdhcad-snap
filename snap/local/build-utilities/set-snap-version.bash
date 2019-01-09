@@ -13,15 +13,16 @@ init(){
 		upstream_version \
 		packaging_revision
 
-	upstream_version="$(
-		git \
-			-C parts/my-app-part/src \
-			describe \
-			--always \
-			--dirty=-d \
-			--tags \
-		| sed s/^v//
-	)"
+	upstream_version=unknown
+# 	upstream_version="$(
+# 		git \
+# 			-C parts/tdhcad/src \
+# 			describe \
+# 			--always \
+# 			--dirty=-d \
+# 			--tags \
+# 		| sed s/^v//
+# 	)"
 
 	packaging_revision="$(
 		git \

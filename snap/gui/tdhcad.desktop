@@ -1,0 +1,11 @@
+# Desktop Entry of the snapped app.
+# Refer the Desktop Entry Specification on how to write this file:
+# https://specifications.freedesktop.org/desktop-entry-spec
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TdhCad
+Comment=Vector Graphics Simplified
+Exec=tdhcad-brlin
+Icon=${SNAP}/meta/gui/tdhcad.png
+Categories=Graphics;2DGraphics;VectorGraphics
