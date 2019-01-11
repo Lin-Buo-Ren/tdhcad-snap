@@ -13,16 +13,13 @@ init(){
 		upstream_version \
 		packaging_revision
 
-	upstream_version=unknown
-# 	upstream_version="$(
-# 		git \
-# 			-C parts/tdhcad/src \
-# 			describe \
-# 			--always \
-# 			--dirty=-d \
-# 			--tags \
-# 		| sed s/^v//
-# 	)"
+	upstream_version="$(
+		# FIXME: Hardcoded version string
+		strings \
+			prime/TdhCad_linux \
+			| grep --extended-regexp '^[0-9]+\.[0-9]+\.[0-9]+$' \
+			| head --lines=1
+	)"
 
 	packaging_revision="$(
 		git \
