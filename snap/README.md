@@ -8,7 +8,7 @@
 **This is the unofficial snap for TdhCad**, *"Vector Graphics Simplified"*. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
 
 <!-- Uncomment and modify this when you are provided a build status badge
-[![Build Status Badge of the `tdhcad-brlin` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/tdhcad-snap.svg "Build Status of the `tdhcad-brlin` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/tdhcad)
+[![Build Status Badge of the `tdhcad` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/tdhcad-snap.svg "Build Status of the `tdhcad` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/tdhcad)
 -->
 
 <!-- Uncomment and modify this when you have a screenshot
@@ -23,24 +23,24 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 
 ### In a Terminal
     # Install the snap #
-    sudo snap install --channel=edge --devmode tdhcad-brlin
-    #sudo snap install --channel=beta tdhcad-brlin
-    #sudo snap install tdhcad-brlin
+    sudo snap install --channel=edge --devmode tdhcad
+    #sudo snap install --channel=beta tdhcad
+    #sudo snap install tdhcad
     
     # Connect the snap to essential security confinement interfaces #
     ## (Proper reasoning for connecting _plug_name_) ##
-    sudo snap connect tdhcad-brlin:_plug_name_
+    sudo snap connect tdhcad:_plug_name_
     
     # Connect the snap to optional security confinement interfaces #
     ## (Proper reasoning for connecting _plug_name_) ##
-    sudo snap connect tdhcad-brlin:_plug_name_
+    sudo snap connect tdhcad:_plug_name_
     
     # Launch the application #
-    tdhcad-brlin
-    snap run tdhcad-brlin # If you have another existing installation
+    tdhcad
+    snap run tdhcad # If you have another existing installation
 
 ### The Graphical Way
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/tdhcad-brlin)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/tdhcad)
 -->
 
 <!-- Uncomment when you have test results
