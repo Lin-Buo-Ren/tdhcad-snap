@@ -7,7 +7,38 @@ set \
 	-o nounset \
 	-o pipefail
 
-#export IMPORTANT_ENVIRONMENT_VARIABLE=value
+# HACK: Executable depend on shared library under the same directory
+# HACK: Application need to create directory under executable directory
+cp \
+	--force \
+	--remove-destination \
+	--verbose \
+	"${SNAP}"/TdhCad_linux \
+	"${SNAP_USER_COMMON}"
 
-# Finally run the next part of the command chain
-exec "${@}"
+ln \
+	--force \
+	--symbolic \
+	--verbose \
+	"${SNAP}"/libTdhCairo.so \
+	"${SNAP}"/*.pdf \
+	"${SNAP_USER_COMMON}"
+mkdir \
+	--verbose \
+	--parents \
+	"${SNAP_USER_COMMON}"/TdhCad_Structure
+ln \
+	--force \
+	--symbolic \
+	--verbose \
+	"${SNAP}"/TdhCad_Structure/TdhCad.sqlite \
+	"${SNAP_USER_COMMON}"/TdhCad_Structure
+
+cp \
+	--no-clobber \
+	--verbose \
+	"${SNAP}"/TdhCad_Structure/TdhCad_config.sqlite \
+	"${SNAP_USER_COMMON}"/TdhCad_Structure
+
+cd "${SNAP_USER_COMMON}"
+./TdhCad_linux

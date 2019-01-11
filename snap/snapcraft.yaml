@@ -101,27 +101,16 @@ apps:
     command: >
       bin/desktop-launch
       "${SNAP}"/bin/tdhcad-launch
-      "${SNAP}"/bin/zenity
-        --info
-        --ok-label='Got it'
-        --title='My Awesome App'
-        --text='This is a demonstrative application for Snapcrafters Template Plus.\nIt indicates that the snapped application has been launched properly.'
-        --window-icon="${SNAP}"/snap/gui/tdhcad.png
-        --width=600
-
-    # If the providing part of the app. has a desktop entry, specify its path relative to the `prime` directory.
-    # If the packaging target doesn't provide a desktop entry, ignore the `desktop` key and implement a desktop entry in `/snap/gui`
-    #desktop: share/applications/tdhcad.desktop
 
 parts:
   # Utility programs to help with package building
-  build-utilities:
-    source: snap/local/build-utilities
-    plugin: dump
-    organize:
-      '*': assets/build-utilities/
-    prime:
-    - -*
+  #build-utilities:
+    #source: snap/local/build-utilities
+    #plugin: dump
+    #organize:
+      #'*': assets/build-utilities/
+    #prime:
+    #- -*
 
   # Launcher programs to fix problems at runtime
   launchers:
@@ -155,38 +144,27 @@ parts:
 
   # Remote part for support of various desktop technologies
   # Refer: https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml
-  desktop-gtk3: # for zenity
+  desktop-gtk2: # For wxGTK
 
-  # Optional auxiliary part for displaying simple dialogs for better user experience, powered by Zenity
-  # https://forum.snapcraft.io/t/the-zenity-remote-part/8793
-  zenity:
-    # This part or part recipe is needed until LP#1766878 is fixed
-    #
-    # Bug #1766878 “$SNAPCRAFT_PROJECT_NAME used in a remote part expands to wrong value” : Bugs : Snapcraft
-    # https://bugs.launchpad.net/snapcraft/+bug/1766878
-    configflags:
-    - --datarootdir=/snap/$SNAPCRAFT_PROJECT_NAME/current/share
-    - --disable-libnotify
-    - --disable-webkitgtk
-    organize:
-      snap/$SNAPCRAFT_PROJECT_NAME/current: /
+  wxwidgets-3-0-gtk2:
+    after:
+    - ccache
 
   tdhcad:
-    after:
-    - build-utilities # for patch-desktop-entries.*
+    source: TdhCad_linux64.zip
+    plugin: dump
 
-    source: snap/local/empty
-    #source-type:
-    #source-tag:
-    #source-depth:
-
-    plugin: nil
-
-    override-stage: |
+    override-prime: |
       set \
         -o errexit \
         -o nounset
 
-      snapcraftctl stage
+      snapcraftctl prime
 
-      ./assets/build-utilities/patch-desktop-entries.bash
+      # HACK: TdhCad (or wxWidgets, etc.) call `evince` when triggering Help > Contents
+      ln \
+        --force \
+        --symbolic \
+        --verbose \
+        /usr/bin/xdg-open \
+        bin/evince
