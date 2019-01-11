@@ -8,7 +8,7 @@
 **This is the unofficial snap for TdhCad**, *"Vector Graphics Simplified"*. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
 
 <!-- Uncomment and modify this when you are provided a build status badge
-[![Build Status Badge of the `tdhcad-brlin` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/tdhcad.svg "Build Status of the `tdhcad-brlin` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/tdhcad)
+[![Build Status Badge of the `tdhcad-brlin` Snap](https://build.snapcraft.io/badge/Lin-Buo-Ren/tdhcad-snap.svg "Build Status of the `tdhcad-brlin` snap")](https://build.snapcraft.io/user/Lin-Buo-Ren/tdhcad)
 -->
 
 <!-- Uncomment and modify this when you have a screenshot
@@ -48,11 +48,11 @@ Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.
 * [A list of functionallities that are verified working]
 
 ## What is NOT Working...yet 
-Check out the [issue tracker](https://github.com/Lin-Buo-Ren/tdhcad/issues) for known issues.
+Check out the [issue tracker](https://github.com/Lin-Buo-Ren/tdhcad-snap/issues) for known issues.
 -->
 
 ## Support
 * Report issues regarding using this snap to the issue tracker:  
-  <https://github.com/Lin-Buo-Ren/tdhcad/issues>
+  <https://github.com/Lin-Buo-Ren/tdhcad-snap/issues>
 * You may also post on the Snapcraft Forum, under the `snap` topic category:  
   <https://forum.snapcraft.io/c/snap>
